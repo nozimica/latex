@@ -1,0 +1,132 @@
+\usetheme{Madrid}
+\usecolortheme{whale}
+\useinnertheme{rounded}
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{footline}[frame number]{}
+
+%%http://tex.stackexchange.com/questions/20654/length-between-nested-lists-in-beamer
+\setbeamertemplate{itemize/enumerate subbody begin}{\vspace{-1mm}}
+\setbeamertemplate{itemize/enumerate subbody end}{\vspace{-1mm}}
+\setbeamertemplate{itemize/enumerate subsubbody begin}{\vspace{-1mm}}
+\setbeamertemplate{itemize/enumerate subsubbody end}{\vspace{-1mm}}
+
+\usepackage{float}
+\usepackage{color}
+\usepackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
+
+\newcommand{\nologo}{\setbeamertemplate{logo}{}} % command to set the logo to nothing
+
+\PassOptionsToPackage{table}{xcolor}
+
+\usepackage{booktabs}
+
+\usepackage[spanish,activeacute]{babel}
+\usepackage{fixltx2e}
+
+\usepackage{iftex}
+\ifPDFTeX
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \PrerenderUnicode{áéíóúÁÉÍÓÚüÜ}
+\else
+    \ifXeTeX
+        \usepackage{xltxtra}
+
+        % set fonts
+        \usepackage{fontspec}
+        \setsansfont[ExternalLocation=../fonts/,
+          Ligatures=TeX,
+          BoldFont=FontinSansBold.otf,
+          BoldItalicFont=FontinSansBoldItalic.otf,
+          SmallCapsFont=FontinSansSC.otf,
+          ItalicFont=FontinSansItalic.otf]{FontinSans.otf}
+        \setbeamerfont{frametitle}{size=\LARGE,series=\bfseries}
+%        \setmonofont[Mapping=tex-text]{Inconsolatazi4}
+        %\usepackage[scaled]{beramono}
+        \setmonofont[ExternalLocation=../fonts/,
+          Scale=MatchLowercase,
+          BoldFont=DejaVuSansMono-Bold.ttf,
+          ItalicFont=DejaVuSansMono-Oblique.ttf,
+          BoldItalicFont=DejaVuSansMono-BoldOblique.ttf]{DejaVuSansMono.ttf}
+    \else
+        \usepackage{luatextra}
+    \fi
+    \defaultfontfeatures{Ligatures=TeX}
+\fi
+
+\usepackage{textcomp} % To get good bullet symbols and avoid problems.
+\usepackage[footnotesize,labelfont=bf,hang]{caption}
+\setbeamertemplate{caption}[numbered] 
+
+\usepackage{hyperref}
+\usepackage{array}
+
+\newcolumntype{C}[1]{%
+ >{\vbox to 3.4ex\bgroup\vfill\centering}%
+ m{#1}%
+ <{\egroup}}
+
+% For inline examples
+\tikzstyle{exampleboxblue} = [draw=black!10!blue!70,thick,rectangle,rounded corners=1mm,fill=black!30!blue!20]
+\tikzstyle{exampleboxgreen} = [draw=black!60!green,thick,rectangle,rounded corners=1mm,fill=black!60!green!30]
+
+% \exampleFig{name}{type}{previosObj}{Text}{Description}
+\newcommand{\exampleFig}[5]{%
+  \node (#1) [#2, below=\nextFig of #3.center] {#4};
+  \node [textdesc, right=\nextDef of #1.center] {#5};
+}
+
+%\setbeamercolor{item projected}{fg=red}
+%\setbeamertemplate{enumerate items}[default]
+%\setbeamercolor{item projected}{fg=green}
+\setbeamercolor{uppercolor}{fg=white,bg=blue!70}
+\setbeamercolor{lowercolor}{fg=black,bg=blue!10}
+% \setbeamercolor{alerted text}{fg=blue}
+%\setbeamercolor*{enumerate item}{fg=red}
+%\setbeamercolor*{enumerate subitem}{fg=red}
+%\setbeamercolor*{enumerate subsubitem}{fg=red}
+
+% Enumerate items, ball
+\setbeamertemplate{enumerate item}
+{
+  \begin{pgfpicture}{-1ex}{-0.65ex}{1ex}{1ex}
+    \usebeamercolor[fg]{item projected}
+    {\pgftransformscale{1.75}\pgftext{\normalsize\pgfuseshading{bigsphere}}}
+    {\pgftransformshift{\pgfpoint{0pt}{0.5pt}}
+      \pgftext{\usebeamercolor[fg]{item projected}\usebeamerfont*{item projected}\insertenumlabel}}
+  \end{pgfpicture}%
+}
+
+\setbeamertemplate{enumerate subitem}
+{ 
+  \begin{pgfpicture}{-1ex}{-0.55ex}{1ex}{1ex}
+    \usebeamercolor[fg]{subitem projected}
+    {\pgftransformscale{1.4}\pgftext{\normalsize\pgfuseshading{bigsphere}}}
+    \pgftext{%
+      \usebeamercolor[fg]{item projected}%
+      \usebeamerfont*{subitem projected}%
+      \insertsubenumlabel}
+  \end{pgfpicture}%
+} 
+
+\setbeamertemplate{enumerate subsubitem}
+{ 
+  \begin{pgfpicture}{-1ex}{-0.55ex}{1ex}{1ex}
+    \usebeamercolor[fg]{subsubitem projected}
+    {\pgftransformscale{1.4}\pgftext{\normalsize\pgfuseshading{bigsphere}}}
+    \pgftext{%
+      \usebeamercolor[fg]{item projected}%
+      \usebeamerfont*{subitem projected}%
+      \insertsubsubenumlabel}
+  \end{pgfpicture}%
+}
+
+% \let\olditem\item
+% \renewcommand{\item}{\setlength{\itemsep}{\fill}\olditem}
+
+\setbeamersize{text margin left=6mm,text margin right=6mm}
+
+\usepackage{tabularx}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+

@@ -1,0 +1,92 @@
+\definecolor{RowColorOdd}{rgb}{1,1,1}
+\definecolor{RowColorEven}{rgb}{0.914,0.914,0.953}
+
+\newcommand{\headerDefTwo}[2]{%
+    \begin{definitionTableTwo} \textcolor{white}{#1} & \textcolor{white}{#2} \end{definitionTableTwo}
+}
+
+\newenvironment{definitionTableTwo}[1][0.2]%
+    {\hspace*{2mm}\tabularx{\dimexpr\textwidth-2\tabcolsep}{@{}C{#1\textwidth}@{} >{\hspace*{5mm}}X @{}}}%
+    {\endtabularx}
+
+\newenvironment{zebraTable}[1][0.2]%
+    {\rowcolors{1}{RowColorOdd}{RowColorEven}\hspace*{2mm}\tabularx{\dimexpr\textwidth-2\tabcolsep}{@{}C{#1\textwidth}@{} >{\hspace*{5mm}}X @{}}}%
+    {\endtabularx}
+
+\newenvironment{customDefsTableTwo}[3][0.2]%
+    {\begin{beamerboxesrounded}[upper=uppercolor,lower=lowercolor,shadow=true,width=100mm]%
+        {\begin{definitionTableTwo}[#1] \textcolor{white}{#2} & \textcolor{white}{#3} \end{definitionTableTwo}}}%
+    {\end{beamerboxesrounded}}
+
+\newenvironment{definitionTableThree}[1][0.3]%
+    {\hspace*{2mm}\tabularx{\dimexpr\textwidth-2\tabcolsep}{@{}C{0.2\textwidth}@{} >{\hspace*{5mm}}X @{} p{#1\textwidth} @{}}}%
+    {\endtabularx}
+
+\newenvironment{zebraTableThree}[1][0.3]%
+    {\rowcolors{1}{RowColorOdd}{RowColorEven}\hspace*{2mm}\tabularx{\dimexpr\textwidth-2\tabcolsep}{@{}C{0.2\textwidth}@{} >{\hspace*{5mm}}X @{} p{#1\textwidth} @{}}}%
+    {\endtabularx}
+
+\newenvironment{customDefsTableThree}[4][0.3]%
+    {\begin{beamerboxesrounded}[upper=uppercolor,lower=lowercolor,shadow=true,width=100mm]%
+        {\begin{definitionTableThree}[#1] \textcolor{white}{#2} & \textcolor{white}{#3} & \textcolor{white}{#4} \end{definitionTableThree}}}%
+    {\end{beamerboxesrounded}}
+
+\newenvironment{customRoundedBox}[2][90mm]%
+    {\begin{beamerboxesrounded}[upper=uppercolor,lower=lowercolor,shadow=true,width=#1]{#2}}%
+    {\end{beamerboxesrounded}}
+
+\newenvironment{rboxx}[2][90mm]%
+    {\vspace{-1em}\begin{center}\hspace{60mm}\begin{customRoundedBox}[#1]{#2}\centering}%
+    {\end{customRoundedBox}\end{center}}
+\newcommand{\buildrboxx}[2][90mm]{\begin{rboxx}[#1]{#2}}
+\newcommand{\finishrboxx}{\end{rboxx}}
+
+\newcommand{\frametitleSec}{\frametitle{\insertsectionhead}}
+\newcommand{\frametitleSubsec}{\frametitle{\insertsectionhead: \hspace{0pt plus 1 filll} \large\subsecname}} 
+\newcommand{\frametitleSubsecNewline}{\frametitle{\insertsectionhead:\\~~\hfill\hfill\hfill\large\subsecname}} 
+
+\setbeamerfont{subsection in toc}{size=\scriptsize}
+
+\setbeamertemplate{section in toc shaded}[default][40]
+\AtBeginSection[]{%
+    \begin{frame}<*>{}
+      \frametitle{Contenidos}
+      \begin{columns}[t]
+        \column{.05\textwidth}
+        \column{.45\textwidth}
+        % \linespread{0.4}
+        \scriptsize
+          \tableofcontents[part={1},currentsection,currentsubsection,subsectionstyle=show/show/hide]
+        \column{.45\textwidth}
+        % \linespread{0.4}
+        \scriptsize
+          \tableofcontents[part={2},currentsection,currentsubsection,subsectionstyle=show/show/hide]
+        \column{.05\textwidth}
+      \end{columns}
+    \end{frame}
+    \addtocounter{framenumber}{-1}% If you don't want them to affect the slide number
+}
+
+\usepackage{multicol}
+
+\newcommand\subsubtitle{\fontsize{16}{18.2}\selectfont}
+
+\newcommand{\subsubtitleO}[1]{\vspace{0.4em}#1\newline\vspace{-0.5em}}
+\newcommand{\subsubtitleB}[1]{\subsubtitleO{\bld{\Large #1}}}
+\newcommand{\subsubtitleA}[2]{\subsubtitleO{\bld{\Large #1}~#2}}
+
+\newcommand\subsubtitleC{\fontsize{12}{14.2}\selectfont}
+
+% \usepackage[style=numeric-comp,useprefix,hyperref,backend=biber]{biblatex}
+% \usepackage{csquotes}
+% \addbibresource{bibliog.bib}
+
+\newcommand{\columnsbegin}{\begin{columns}[t,onlytextwidth]}%
+\newcommand{\columnsend}{\end{columns}}%
+
+\newcommand{\importantboxbegin}[1]{\begin{center}\hspace{10mm}\begin{beamerboxesrounded}[upper=uppercolor,lower=lowercolor,shadow=true]{#1}}%
+\newcommand{\importantboxend}{\end{beamerboxesrounded}\end{center}}%
+
+\newcommand{\texthigh}[1]{\textcolor{blue}{#1}}
+\newcommand{\bldhigh}[1]{\textbf{\textcolor{blue}{#1}}}
+

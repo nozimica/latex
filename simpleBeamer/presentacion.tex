@@ -1,0 +1,32 @@
+\documentclass[12pt,xcolor={dvipsnames,x11names},t]{beamer}
+
+\title{title}
+\subtitle{subtitle}
+
+\author{Nicolás Eugenio Ozimica}
+
+\usepackage{nozbeamer}
+\usebackgroundtemplate{
+  \begin{tikzpicture}
+    \path [outer color = blue!5, inner color = blue!1]
+      (0,0) rectangle (\paperwidth,\paperheight);
+  \end{tikzpicture}}
+\providecommand{\tightlist}{%
+    \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\date{}
+
+\begin{document}
+
+%----------- titlepage ----------------------------------------------%
+\begin{frame}[plain]
+    \vspace{6mm}
+    \centering
+    % \raisebox{-0.6\height}{\includegraphics[width=70mm]{img/fcfm_dii_50a.png}}
+    % \raisebox{-0.5\height}{\includegraphics[width=34mm]{img/mbe.png}}
+    \vspace{6mm}
+\titlepage
+\end{frame}
+
+\include{tex/1.01}
+\end{document}
